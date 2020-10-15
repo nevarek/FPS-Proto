@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Container.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.278431, 0.278431, 0.278431, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 40, 40 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( 20, 0, 20, -20, 0, 20, 20, 0, -20, -20, 0, 20, -20, 0, -20, 20, 0, -20 )
+
+[node name="World" type="Spatial"]
+
+[node name="Floor" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Floor/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor/MeshInstance/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="Objects" type="Spatial" parent="."]
+
+[node name="Box" parent="Objects" instance=ExtResource( 1 )]
+
+[node name="Box2" parent="Objects" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35119, 1, 7.27557 )
+
+[node name="Box3" parent="Objects" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.09708, 1, -16.4466 )
+
+[node name="Box4" parent="Objects" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53957, 1, -15.3205 )
+
+[node name="Container" parent="Objects" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 3 )

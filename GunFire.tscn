@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+direction = Vector3( 0, 0, 1 )
+spread = 15.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 0.77
+color = Color( 1, 0.368627, 0, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 0.2, 0.2, 0.2 )
+
+[node name="GunFire" type="Particles"]
+emitting = false
+amount = 5
+lifetime = 0.05
+one_shot = true
+process_material = SubResource( 1 )
+draw_pass_1 = SubResource( 2 )

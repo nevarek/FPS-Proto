@@ -6,11 +6,11 @@ class Line:
     var LineColor
     var Time
 
-    func _init(Start, End, LineColor, Time):
-        self.Start = Start
-        self.End = End
-        self.LineColor = LineColor
-        self.Time = Time
+    func _init(_Start, _End, _LineColor, _Time):
+        self.Start = _Start
+        self.End = _End
+        self.LineColor = _LineColor
+        self.Time = _Time
 
 var Lines = []
 var RemovedLine = false

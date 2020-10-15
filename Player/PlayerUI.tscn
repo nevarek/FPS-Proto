@@ -1,0 +1,181 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Player/player_ui.gd" type="Script" id=1]
+[ext_resource path="res://Player/PlayerHUD.gd" type="Script" id=2]
+[ext_resource path="res://Player/ContainerQuickview.gd" type="Script" id=3]
+[ext_resource path="res://InventoryItemList.tscn" type="PackedScene" id=4]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameUI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Crosshair" type="Control" parent="GameUI"]
+modulate = Color( 1, 1, 1, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 21.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="GameUI/Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -0.5
+margin_top = -0.5
+margin_right = 2.5
+margin_bottom = 2.5
+
+[node name="HUD" type="Control" parent="GameUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthDisplay" type="HBoxContainer" parent="GameUI/HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -40.0
+margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key" type="Label" parent="GameUI/HUD/HealthDisplay"]
+margin_top = 13.0
+margin_right = 50.0
+margin_bottom = 27.0
+text = "HEALTH"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="GameUI/HUD/HealthDisplay"]
+margin_left = 54.0
+margin_top = 13.0
+margin_right = 69.0
+margin_bottom = 27.0
+text = "---"
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="GameMenu" type="Control" parent="Menus"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DimFilter" type="ColorRect" parent="Menus/GameMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="Menus/GameMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -53.5
+margin_top = -55.0
+margin_right = 53.5
+margin_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/GameMenu/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 100.0
+margin_bottom = 85.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="Menus/GameMenu/PanelContainer/VBoxContainer"]
+margin_right = 93.0
+margin_bottom = 14.0
+text = "GAME PAUSED"
+align = 1
+valign = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Menus/GameMenu/PanelContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 93.0
+margin_bottom = 78.0
+
+[node name="Quit" type="Button" parent="Menus/GameMenu/PanelContainer/VBoxContainer/Buttons"]
+margin_right = 93.0
+margin_bottom = 20.0
+text = "QUIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="Menus/GameMenu/PanelContainer/VBoxContainer/Buttons"]
+margin_top = 24.0
+margin_right = 93.0
+margin_bottom = 44.0
+text = "RESUME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContainerQuickview" type="Control" parent="Menus"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -201.0
+margin_top = -60.5
+margin_bottom = 60.5
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menus/ContainerQuickview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -0.999985
+margin_bottom = -21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Menus/ContainerQuickview/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 14.0
+text = "<CONTAINER>"
+align = 1
+
+[node name="InventoryItemList" parent="Menus/ContainerQuickview/VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 18.0

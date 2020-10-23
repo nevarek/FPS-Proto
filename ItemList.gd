@@ -8,3 +8,6 @@ func add_item(item) -> void:
     var new_item_lbl = Label.new()
     new_item_lbl.text = str(item.name)
     add_child(new_item_lbl)
+
+func take_item(player : KinematicBody) -> void:
+    print('take')

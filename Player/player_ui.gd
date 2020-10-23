@@ -33,10 +33,21 @@ func _game_quit() -> void:
 func is_mouse_captured() -> bool:
     return Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 
-func _process_player(event : InputEvent) -> void:
-    if event is InputEventMouseMotion:
-        if player.looking_at == null or player.looking_at.is_in_group('containers') == false:
-            $Menus/ContainerQuickview.hide_inventory()
-            return
+func is_player_viewing_container() -> bool:
+    return player.looking_at != null and player.looking_at.is_in_group('containers')
 
+func is_player_viewing_interactable() -> bool:
+    return player.looking_at != null and player.looking_at.is_in_group('interactable')
+
+func _process_player(event : InputEvent) -> void:
+    $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
+
+    if is_player_viewing_container() == false:
+        $Menus/ContainerQuickview.hide_inventory()
+        return
+
+    if event is InputEventMouseMotion:
         $Menus/ContainerQuickview.show_inventory(player.looking_at)
+
+    if event.is_action_released('activate'):
+        $Menus/ContainerQuickview.loot_item(player)

@@ -8,5 +8,13 @@ var inventory = [
     {
         name = 'Ammo',
         count = 1
+    },
+    {
+        name = 'Ammo',
+        count = 1
+    },
+    {
+        name = 'Ammo',
+        count = 1
     }
 ]

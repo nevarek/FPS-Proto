@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player/player_ui.gd" type="Script" id=1]
 [ext_resource path="res://Player/PlayerHUD.gd" type="Script" id=2]
@@ -6,6 +6,14 @@
 [ext_resource path="res://InventoryItemList.tscn" type="PackedScene" id=4]
 [ext_resource path="res://reticle_hover.png" type="Texture" id=5]
 [ext_resource path="res://reticle_nominal.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0470588, 0.0509804, 0.152941, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0.192157, 0.427451, 0.466667, 1 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
@@ -61,20 +69,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HoverIndicator" type="Control" parent="GameUI"]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HUD" type="Control" parent="GameUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
+margin_left = 5.5946
+margin_top = 3.81079
+margin_right = -4.4054
+margin_bottom = -6.18921
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -180,10 +181,18 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -201.0
-margin_top = -60.5
-margin_bottom = 60.5
+margin_left = -414.0
+margin_top = -60.0
+margin_bottom = 87.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Menus/ContainerQuickview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -191,40 +200,92 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="Menus/ContainerQuickview"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -0.999985
-margin_bottom = -21.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Menus/ContainerQuickview/VBoxContainer"]
-margin_right = 200.0
+margin_right = 404.0
 margin_bottom = 14.0
 text = "<CONTAINER>"
 align = 1
 
-[node name="InventoryItemList" parent="Menus/ContainerQuickview/VBoxContainer" instance=ExtResource( 4 )]
+[node name="ScrollContainer" type="ScrollContainer" parent="Menus/ContainerQuickview/VBoxContainer"]
+margin_left = 20.0
 margin_top = 18.0
-margin_right = 200.0
-margin_bottom = 63.0
+margin_right = 384.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 0, 95 )
+size_flags_horizontal = 3
+scroll_horizontal_enabled = false
+
+[node name="InventoryItemList" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer" instance=ExtResource( 4 )]
+margin_right = 364.0
+margin_bottom = 86.0
 rect_min_size = Vector2( 0, 45 )
+rect_clip_content = true
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer/InventoryItemList"]
+margin_right = 364.0
+margin_bottom = 14.0
+text = "<ITEM 0>"
+
+[node name="Label3" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer/InventoryItemList"]
+margin_top = 18.0
+margin_right = 364.0
+margin_bottom = 32.0
+text = "<ITEM 0>"
+
+[node name="Label4" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer/InventoryItemList"]
+margin_top = 36.0
+margin_right = 364.0
+margin_bottom = 50.0
+text = "<ITEM 0>"
+
+[node name="Label2" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer/InventoryItemList"]
+margin_top = 54.0
+margin_right = 364.0
+margin_bottom = 68.0
+text = "<ITEM 1>"
+max_lines_visible = 3
+
+[node name="Label5" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/ScrollContainer/InventoryItemList"]
+margin_top = 72.0
+margin_right = 364.0
+margin_bottom = 86.0
+text = "<ITEM 1>"
+max_lines_visible = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Menus/ContainerQuickview/VBoxContainer"]
-margin_top = 67.0
-margin_right = 200.0
-margin_bottom = 81.0
+margin_top = 117.0
+margin_right = 404.0
+margin_bottom = 131.0
 
 [node name="HintTake" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/HBoxContainer"]
-margin_right = 98.0
+margin_right = 132.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Take Item"
 align = 1
 valign = 1
 
+[node name="HintTakeAll" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/HBoxContainer"]
+margin_left = 136.0
+margin_right = 268.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Take All"
+align = 1
+valign = 1
+
 [node name="HintOpenMenu" type="Label" parent="Menus/ContainerQuickview/VBoxContainer/HBoxContainer"]
-margin_left = 102.0
-margin_right = 200.0
+margin_left = 272.0
+margin_right = 404.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Open Menu"

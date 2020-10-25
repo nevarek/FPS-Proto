@@ -1,6 +1,7 @@
 extends Spatial
 
 signal health_changed
+signal ready_to_play
 
 var camera : Camera
 var UI : Control
@@ -9,17 +10,18 @@ var controllers : Node
 var health : int = 100
 var looking_at : Spatial
 
-var buffs = []
-var debuffs = []
+var inventory = []
 
 func _ready() -> void:
     camera = $CameraRig/Camera
     UI = $UI
     controllers = $Controllers
 
-    looking_at = null
+    emit_signal('ready_to_play')
+    init_ui()
 
-    emit_signal('health_changed')
+func init_ui() -> void:
+    $UI._init_player_ui()
 
 func hit(projectile) -> void:
     if projectile and projectile.get('damage'):
@@ -32,15 +34,6 @@ func hit(projectile) -> void:
 
 func die() -> void:
     get_tree().quit()
-
-func apply_debuff(debuff_info) -> bool:
-    var is_immune = false # TODO immunities?
-
-    if is_immune:
-        return false
-
-    debuffs.append(debuff_info)
-    return true
 
 func _physics_process(delta: float) -> void:
     pass

@@ -10,6 +10,18 @@ func _ready():
 
     resume()
 
+func _init_player_ui() -> void:
+    player.emit_signal('health_changed')
+
+    if is_player_viewing_container() == false:
+        $Menus/ContainerQuickview.hide_inventory()
+        return
+
+    $Menus/ContainerQuickview.show_inventory(player.looking_at)
+
+    $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
+
+
 func _input(event: InputEvent) -> void:
     if event.is_action_released('ui_cancel'):
         if is_mouse_captured() == true:
@@ -39,15 +51,21 @@ func is_player_viewing_container() -> bool:
 func is_player_viewing_interactable() -> bool:
     return player.looking_at != null and player.looking_at.is_in_group('interactable')
 
-func _process_player(event : InputEvent) -> void:
-    $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
-
+func _process_container_input(event : InputEvent) -> void:
     if is_player_viewing_container() == false:
         $Menus/ContainerQuickview.hide_inventory()
         return
 
-    if event is InputEventMouseMotion:
-        $Menus/ContainerQuickview.show_inventory(player.looking_at)
+    $Menus/ContainerQuickview.show_inventory(player.looking_at)
 
     if event.is_action_released('activate'):
         $Menus/ContainerQuickview.loot_item(player)
+
+
+func _process_player(event : InputEvent, forced : bool = false) -> void:
+    if forced == true or event is InputEventMouseMotion:
+        $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
+
+    _process_container_input(event)
+
+

@@ -4,7 +4,7 @@ var ItemListNode
 var container_name : String
 
 func _ready() -> void:
-    ItemListNode = $VBoxContainer/InventoryItemList
+    ItemListNode = $VBoxContainer/ScrollContainer/InventoryItemList
     hide_inventory()
 
 func loot_item(player : KinematicBody) -> void:
@@ -37,7 +37,9 @@ func clear() -> void:
 func _set_hotkey_hints() -> void:
     var take_hotkey = OS.get_scancode_string(ProjectSettings.get_setting('input/activate').events[0].get_scancode_with_modifiers())
     var open_menu_hotkey = OS.get_scancode_string(ProjectSettings.get_setting('input/open_menu').events[0].get_scancode_with_modifiers())
+    var take_all_hotkey = OS.get_scancode_string(ProjectSettings.get_setting('input/take_all').events[0].get_scancode_with_modifiers())
 
     $VBoxContainer/HBoxContainer/HintTake.text = '[%s] Take Item' % [take_hotkey]
+    $VBoxContainer/HBoxContainer/HintTakeAll.text = '[%s] Take All' % [take_all_hotkey]
     $VBoxContainer/HBoxContainer/HintOpenMenu.text = '[%s] Open Menu' % [open_menu_hotkey]
 

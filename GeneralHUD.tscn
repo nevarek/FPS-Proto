@@ -1,0 +1,180 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://reticle_hover.png" type="Texture" id=1]
+[ext_resource path="res://reticle_nominal.png" type="Texture" id=2]
+[ext_resource path="res://Player/PlayerHUD.gd" type="Script" id=3]
+[ext_resource path="res://QuicklootMenu.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0, 0, 0, 1 )
+
+[node name="GeneralHUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyInfo" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 200, 0 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="EnemyInfo"]
+margin_top = 1.0
+margin_right = 200.0
+margin_bottom = 15.0
+text = "ENEMY NAME"
+align = 1
+
+[node name="Health" type="ProgressBar" parent="EnemyInfo"]
+margin_top = 19.0
+margin_right = 200.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 0, 12 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 0.1
+value = 80.0
+rounded = true
+percent_visible = false
+
+[node name="PlayerInfo" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -32.0
+margin_right = 200.0
+rect_min_size = Vector2( 200, 0 )
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Region" type="Label" parent="PlayerInfo"]
+visible = false
+margin_top = 1.0
+margin_right = 200.0
+margin_bottom = 15.0
+text = "REGION"
+align = 1
+
+[node name="Health" type="ProgressBar" parent="PlayerInfo"]
+margin_top = 10.0
+margin_right = 200.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 0, 12 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+step = 1.0
+value = 80.0
+rounded = true
+percent_visible = false
+
+[node name="Messages" type="VBoxContainer" parent="."]
+margin_right = 239.0
+margin_bottom = 168.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Messages"]
+margin_right = 239.0
+margin_bottom = 14.0
+text = "Message"
+
+[node name="Message" type="Label" parent="Messages"]
+margin_top = 18.0
+margin_right = 239.0
+margin_bottom = 168.0
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum est quam, posuere ac turpis a, finibus dictum magna. Quisque pulvinar ipsum non ex tempor accumsan. Donec suscipit nulla nec elit hendrerit, in ultrices orci pulvinar. Integer non suscipit sem, et ultrices odio. "
+autowrap = true
+
+[node name="WeaponInfo" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -49.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="WeaponInfo"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "00000"
+
+[node name="Label2" type="Label" parent="WeaponInfo"]
+margin_top = 18.0
+margin_right = 40.0
+margin_bottom = 49.0
+text = "00000
+"
+
+[node name="Crosshair" type="Control" parent="."]
+modulate = Color( 1, 1, 1, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -21.0
+margin_top = -21.0
+margin_right = 21.0
+margin_bottom = 21.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nominal" type="TextureRect" parent="Crosshair"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hovered" type="TextureRect" parent="Crosshair"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuicklootMenu" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.55
+anchor_top = 0.4
+anchor_right = 0.55
+anchor_bottom = 0.4
+margin_left = 0.799988
+margin_top = -1.0
+margin_right = 380.8
+margin_bottom = 139.0
+grow_horizontal = 2
+grow_vertical = 2

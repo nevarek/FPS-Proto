@@ -18,8 +18,7 @@ func _init_player_ui() -> void:
         return
 
     $Menus/ContainerQuickview.show_inventory(player.looking_at)
-
-    $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
+    $GameUI/GeneralHUD/Crosshair/Hovered.visible = is_player_viewing_interactable()
 
 
 func _input(event: InputEvent) -> void:
@@ -64,8 +63,6 @@ func _process_container_input(event : InputEvent) -> void:
 
 func _process_player(event : InputEvent, forced : bool = false) -> void:
     if forced == true or event is InputEventMouseMotion:
-        $GameUI/Crosshair/Hovered.visible = is_player_viewing_interactable()
+        $GameUI/GeneralHUD/Crosshair/Hovered.visible = is_player_viewing_interactable()
 
     _process_container_input(event)
-
-

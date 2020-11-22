@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://in-development/ScrollingItemList.gd" type="Script" id=1]
+
+[node name="ScrollingItemList" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="VBoxContainer" parent="."]
+margin_right = 55.0
+margin_bottom = 70.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="List"]
+margin_right = 55.0
+margin_bottom = 14.0
+text = "< ITEM >"
+
+[node name="Label2" type="Label" parent="List"]
+margin_top = 14.0
+margin_right = 55.0
+margin_bottom = 28.0
+text = "< ITEM >"
+
+[node name="Label3" type="Label" parent="List"]
+margin_top = 28.0
+margin_right = 55.0
+margin_bottom = 42.0
+text = "< ITEM >"
+
+[node name="Label4" type="Label" parent="List"]
+margin_top = 42.0
+margin_right = 55.0
+margin_bottom = 56.0
+text = "< ITEM >"
+
+[node name="Label5" type="Label" parent="List"]
+margin_top = 56.0
+margin_right = 55.0
+margin_bottom = 70.0
+text = "< ITEM >"
+__meta__ = {
+"_edit_use_anchors_": false
+}

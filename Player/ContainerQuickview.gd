@@ -19,15 +19,9 @@ func hide_inventory() -> void:
 
 func show_inventory(container) -> void:
     if visible: return
-
     $VBoxContainer/Label.text = container.name
-    var inventory_list = container.get('inventory')
-
-    for item in inventory_list:
-        ItemListNode.add_item(item)
-
+    ItemListNode.set_container(container)
     _set_hotkey_hints()
-
     visible = true
 
 func clear() -> void:

@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://QuicklootMenu.gd" type="Script" id=1]
+
+[node name="QuicklootMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Container"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "TITLE"
+align = 1
+
+[node name="ItemList" type="VBoxContainer" parent="Container"]
+margin_top = 24.0
+margin_right = 1024.0
+margin_bottom = 110.0
+
+[node name="Label" type="Label" parent="Container/ItemList"]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "< ITEM >"
+align = 1
+
+[node name="Label2" type="Label" parent="Container/ItemList"]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+text = "< ITEM >"
+align = 1
+
+[node name="Label3" type="Label" parent="Container/ItemList"]
+margin_top = 36.0
+margin_right = 1024.0
+margin_bottom = 50.0
+text = "< ITEM >"
+align = 1
+
+[node name="Label4" type="Label" parent="Container/ItemList"]
+margin_top = 54.0
+margin_right = 1024.0
+margin_bottom = 68.0
+text = "< ITEM >"
+align = 1
+
+[node name="Label5" type="Label" parent="Container/ItemList"]
+margin_top = 72.0
+margin_right = 1024.0
+margin_bottom = 86.0
+text = "< ITEM >"
+align = 1
+
+[node name="ControlHints" type="HBoxContainer" parent="Container"]
+margin_top = 120.0
+margin_right = 1024.0
+margin_bottom = 134.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Container/ControlHints"]
+margin_right = 510.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "[ K ] COMMAND 1"
+align = 1
+
+[node name="Label2" type="Label" parent="Container/ControlHints"]
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "[ K ] COMMAND 1"
+align = 1

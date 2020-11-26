@@ -34,12 +34,15 @@ func _process_camera_movement(event : InputEvent) -> void:
     rotation_helper.rotation_degrees = camera_rotation
 
 func _process_object_under_cursor(cursor_position : Vector2) -> void:
+    # create and project a ray
     var ray_length = 7
     var camera = player.get_node('CameraRig/Camera')
     var from = camera.project_ray_origin(cursor_position)
     var to = from + camera.project_ray_normal(cursor_position) * ray_length
     var space_state = player.get_world().direct_space_state
     var result = space_state.intersect_ray(from, to, [], 13)
+
+    # get collision object
     var body : Spatial = result.get('collider')
     if body == null:
         player.looking_at = null

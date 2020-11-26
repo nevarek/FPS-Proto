@@ -65,5 +65,8 @@ func _physics_process(delta: float) -> void:
     pass
 
 func add_item(item) -> void:
+    for existing_item in inventory:
+        if existing_item.name == item.name:
+            existing_item.count += item.count
+            return
     inventory.append(item)
-    print(inventory)

@@ -1,45 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Box.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Container.tscn" type="PackedScene" id=2]
-[ext_resource path="res://FloorMesh.tres" type="PlaneMesh" id=3]
-[ext_resource path="res://FloorMesh_Bright.tres" type="PlaneMesh" id=4]
+[ext_resource path="res://gridmap-objects/floors.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://Healthpack.tscn" type="PackedScene" id=5]
-
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 1, 0, 0, 1 )
-
-[sub_resource type="PlaneMesh" id=2]
-material = SubResource( 1 )
-size = Vector2( 40, 40 )
-
-[sub_resource type="MeshLibrary" id=3]
-item/0/name = "Floor"
-item/0/mesh = ExtResource( 3 )
-item/0/mesh_transform = null
-item/0/shapes = [  ]
-item/0/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-item/1/name = "FloorBright"
-item/1/mesh = ExtResource( 4 )
-item/1/mesh_transform = null
-item/1/shapes = [  ]
-item/1/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-item/2/name = "FloorEdge"
-item/2/mesh = SubResource( 2 )
-item/2/mesh_transform = null
-item/2/shapes = [  ]
-item/2/navmesh_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Spatial"]
 
 [node name="Floor" type="Spatial" parent="."]
 
 [node name="GridMap" type="GridMap" parent="Floor"]
-mesh_library = SubResource( 3 )
+mesh_library = ExtResource( 3 )
 cell_size = Vector3( 40, 40, 40 )
 cell_center_y = false
 data = {
-"cells": PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 0, 3, 0, 655362, 65532, 0, 655362, 65533, 0, 1, 65534, 0, -1610612736, 65535, 0, 1, 0, 1, 655361, 1, 1, 0, 2, 1, 655361, 3, 1, 655362, 65532, 1, 537526274, 65533, 1, 655360, 65534, 1, 655361, 65535, 1, 0, 0, 2, -1609957376, 1, 2, 655361, 2, 2, -1609957376, 3, 2, 655362, 65532, 2, 655362, 65533, 2, 655361, 65534, 2, 655360, 65535, 2, 655361, 0, 3, 655362, 1, 3, -1609957374, 2, 3, 655362, 3, 3, 537526274, 65532, 3, 655362, 65533, 3, 537526274, 65534, 3, -1609957374, 65535, 3, 655362, 0, 65533, 655362, 1, 65533, 655362, 2, 65533, 537526274, 3, 65533, 655362, 65532, 65533, 655362, 65533, 65533, 655362, 65534, 65533, 655362, 65535, 65533, 655362, 0, 65534, 0, 1, 65534, 1, 2, 65534, 0, 3, 65534, 655362, 65532, 65534, 655362, 65533, 65534, 1, 65534, 65534, 0, 65535, 65534, 536870913, 0, 65535, 536870913, 1, 65535, 0, 2, 65535, 1, 3, 65535, 655362, 65532, 65535, 655362, 65533, 65535, 0, 65534, 65535, 1, 65535, 65535, 0 )
+"cells": PoolIntArray( 0, 0, 0, 1, 0, 1, 2, 0, 0, 3, 0, -2146828286, 65532, 0, 655362, 65533, 0, 1, 65534, 0, 0, 65535, 0, 1, 0, 1, 655361, 1, 1, 0, 2, 1, 655361, 3, 1, 655362, 65532, 1, 655362, 65533, 1, 655360, 65534, 1, 655361, 65535, 1, 0, 0, 2, 655360, 1, 2, 655361, 2, 2, 655360, 3, 2, 655362, 65532, 2, 655362, 65533, 2, -1609957375, 65534, 2, 655360, 65535, 2, 655361, 0, 3, 655362, 1, 3, 655362, 2, 3, 537526274, 3, 3, 655362, 65532, 3, 655362, 65533, 3, 655362, 65534, 3, 655362, 65535, 3, 655362, 0, 65533, 537526274, 1, 65533, 655362, 2, 65533, 655362, 3, 65533, 655362, 65532, 65533, 655362, 65533, 65533, 655362, 65534, 65533, 655362, 65535, 65533, 655362, 0, 65534, 0, 1, 65534, 1, 2, 65534, 0, 3, 65534, 537526274, 65532, 65534, -1609957374, 65533, 65534, 1, 65534, 65534, 0, 65535, 65534, 1, 0, 65535, 1, 1, 65535, 0, 2, 65535, 536870913, 3, 65535, -2146828286, 65532, 65535, 655362, 65533, 65535, 0, 65534, 65535, 1, 65535, 65535, 0 )
 }
 __meta__ = {
 "_editor_clip_": 0
@@ -63,3 +39,16 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0.947518, 4.62435, -4.8 )
 
 [node name="Healthpack" parent="Objects" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23553, 23.1759 )
+
+[node name="Enemy" parent="Objects" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06798, 3, 18.47 )
+
+[node name="Enemy2" parent="Objects" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.621111, 3, -21.7782 )
+
+[node name="Enemy3" parent="Objects" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0721, 3, 17.3575 )
+
+[node name="Enemy4" parent="Objects" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8556, 3, -4.70331 )
+mode = 0

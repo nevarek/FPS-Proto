@@ -1,20 +1,19 @@
 extends StaticBody
 
-var inventory = [
-    {
-        'name': 'Scrap Metal',
-        'count': 1
+var test_inventory = {
+    "Scrap Metal": {
+        "name": "Scrap Metal",
+        "count": 1,
+        "is_stackable": "false"
     },
-    {
-        name = 'Ammo',
-        count = 1
-    },
-    {
-        name = 'Ammo',
-        count = 1
-    },
-    {
-        name = 'Ammo',
-        count = 1
+    "Ammo": {
+        "name": "Ammo",
+        "count": 3,
+        "is_stackable": "false"
     }
-]
+}
+
+var inventory : Inventory
+
+func _ready() -> void:
+    inventory = Inventory.new(test_inventory)

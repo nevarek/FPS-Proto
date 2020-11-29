@@ -25,7 +25,7 @@ var action_points = Vector2(5, 5) setget _set_ap
 var health : Vector2 = Vector2(70, 100) setget _set_health
 var looking_at : Spatial
 
-var inventory = []
+var inventory : Inventory
 
 func _set_ap(value) -> void:
     action_points[0] = min(value, action_points[1])
@@ -41,6 +41,7 @@ func _ready() -> void:
 
     emit_signal('ready_to_play')
     init_ui()
+    inventory = Inventory.new()
 
 func init_stats() -> void:
     action_points[1] = 5 + stats.agility / 2
@@ -65,8 +66,12 @@ func _physics_process(delta: float) -> void:
     pass
 
 func add_item(item) -> void:
-    for existing_item in inventory:
-        if existing_item.name == item.name:
-            existing_item.count += item.count
-            return
-    inventory.append(item)
+    var existing_item = inventory.get(item.name)
+    if existing_item != null and existing_item.is_stackable:
+        existing_item.count += 1
+
+func get_hud() -> Node:
+    return $UI/GameUI/GeneralHUD
+
+func get_weapon() -> Node:
+    return $CameraRig/WeaponController.current_weapon

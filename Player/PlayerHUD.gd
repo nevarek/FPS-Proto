@@ -16,3 +16,8 @@ func _ready() -> void:
 
 func _on_health_changed() -> void:
     $PlayerInfo/Health.value = player.health[0]
+
+func set_weapon(weapon : Weapon) -> void:
+    #weapon.current_ammo
+    #weapon.remaining_ammo
+    pass

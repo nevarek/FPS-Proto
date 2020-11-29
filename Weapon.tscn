@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://pistol.gd" type="Script" id=1]
+[ext_resource path="res://Weapon.gd" type="Script" id=1]
 
-[node name="Pistol" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.605483, -0.462501, -2.34898 )
+[node name="Weapon" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="Model" type="CSGCombiner" parent="."]
@@ -20,3 +19,6 @@ transform = Transform( 0.0662874, 0, 0, 0, 0.109292, 0, 0, 0, 0.0644033, 0.21561
 
 [node name="FiringPoint" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, -0.04, -0.684547 )
+
+[node name="FiringRateTimer" type="Timer" parent="."]
+one_shot = true

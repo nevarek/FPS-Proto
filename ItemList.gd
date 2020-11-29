@@ -17,6 +17,8 @@ func add_item(item) -> void:
     var new_item_lbl = Label.new()
     new_item_lbl.align = Label.ALIGN_CENTER
     new_item_lbl.text = str(item.name)
+    if item.count > 1:
+        new_item_lbl.text += ' (%s)' % str(item.count)
     add_child(new_item_lbl)
 
 func set_selected_index() -> void:
@@ -25,15 +27,15 @@ func set_selected_index() -> void:
     #get_children()[selected_index]
 
 func take_item(player : KinematicBody) -> void:
-    if is_container(_container) == false or _container.inventory.size() == 0:
+    if is_container(_container) == false or _container.inventory.sorted().size() == 0:
         return
 
     var item_index = 0
 
     if player.is_in_group('players'):
         # get item
-        var item = _container.inventory[item_index]
-        _container.inventory.remove(item_index)
+        var item = _container.inventory.sorted()[item_index]
+        _container.inventory.remove(item)
         remove_child(get_children()[item_index])
 
         # add item to inventory
@@ -46,7 +48,7 @@ func set_container(container : Spatial) -> void:
 
     _container = container
 
-    for item in _container.inventory:
+    for item in _container.inventory.sorted():
         add_item(item)
 
 func is_container(container) -> bool:

@@ -28,6 +28,8 @@ func _input(event: InputEvent) -> void:
         else:
             resume()
 
+    if event.is_action_released('toggle_backpack'):
+        print('here')
     _process_player(event)
 
 func pause() -> void:

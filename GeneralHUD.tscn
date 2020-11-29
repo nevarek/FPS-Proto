@@ -112,12 +112,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="WeaponInfo"]
+[node name="CurrentAmmo" type="Label" parent="WeaponInfo"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "00000"
 
-[node name="Label2" type="Label" parent="WeaponInfo"]
+[node name="RemainingAmmo" type="Label" parent="WeaponInfo"]
 margin_top = 18.0
 margin_right = 40.0
 margin_bottom = 49.0

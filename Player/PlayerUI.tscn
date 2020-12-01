@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/player_ui.gd" type="Script" id=1]
 [ext_resource path="res://GeneralHUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/ContainerQuickview.gd" type="Script" id=3]
 [ext_resource path="res://InventoryItemList.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GameMenu.tscn" type="PackedScene" id=5]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0470588, 0.0509804, 0.152941, 1 )
@@ -29,7 +30,6 @@ margin_left = 5.0
 margin_top = 5.0
 margin_right = -5.0
 margin_bottom = -5.0
-mouse_filter = 2
 
 [node name="Menus" type="CanvasLayer" parent="."]
 
@@ -157,83 +157,12 @@ text = "Open Menu"
 align = 1
 valign = 1
 
-[node name="GameMenu" type="Control" parent="Menus"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_group_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="DimFilter" type="ColorRect" parent="Menus/GameMenu"]
-anchor_left = -0.0248742
-anchor_top = -0.00749156
-anchor_right = 0.975126
-anchor_bottom = 0.992508
-margin_left = 25.4712
-margin_top = 4.49493
-margin_right = 25.4712
-margin_bottom = 4.49493
-mouse_filter = 2
-color = Color( 0, 0, 0, 0.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PanelContainer" type="PanelContainer" parent="Menus/GameMenu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -53.5
-margin_top = -55.0
-margin_right = 53.5
-margin_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Menus/GameMenu/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 100.0
-margin_bottom = 85.0
-custom_constants/separation = 20
-
-[node name="Label" type="Label" parent="Menus/GameMenu/PanelContainer/VBoxContainer"]
-margin_right = 93.0
-margin_bottom = 14.0
-text = "GAME PAUSED"
-align = 1
-valign = 1
-
-[node name="Buttons" type="VBoxContainer" parent="Menus/GameMenu/PanelContainer/VBoxContainer"]
-margin_top = 34.0
-margin_right = 93.0
-margin_bottom = 78.0
-
-[node name="Quit" type="Button" parent="Menus/GameMenu/PanelContainer/VBoxContainer/Buttons"]
-margin_right = 93.0
-margin_bottom = 20.0
-text = "QUIT"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Resume" type="Button" parent="Menus/GameMenu/PanelContainer/VBoxContainer/Buttons"]
-margin_top = 24.0
-margin_right = 93.0
-margin_bottom = 44.0
-text = "RESUME"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="GameMenu" parent="Menus" instance=ExtResource( 5 )]
 
 [node name="BackpackView" type="Control" parent="Menus"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

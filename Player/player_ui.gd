@@ -12,6 +12,7 @@ func _ready():
 
 func _init_player_ui() -> void:
     player.emit_signal('health_changed')
+    player.emit_signal('weapon_changed')
 
     if is_player_viewing_container() == false:
         $Menus/ContainerQuickview.hide_inventory()
@@ -47,9 +48,11 @@ func is_mouse_captured() -> bool:
     return Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
 
 func is_player_viewing_container() -> bool:
+    if not is_instance_valid(player): return false
     return player.looking_at != null and player.looking_at.is_in_group('containers')
 
 func is_player_viewing_interactable() -> bool:
+    if not is_instance_valid(player): return false
     return player.looking_at != null and player.looking_at.is_in_group('interactable')
 
 func _process_container_input(event : InputEvent) -> void:

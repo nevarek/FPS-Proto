@@ -1,5 +1,6 @@
 extends Spatial
 
+signal weapon_changed
 signal health_changed
 signal ready_to_play
 
@@ -26,6 +27,7 @@ var health : Vector2 = Vector2(70, 100) setget _set_health
 var looking_at : Spatial
 
 var inventory : Inventory
+var weapon_controller : Node
 
 func _set_ap(value) -> void:
     action_points[0] = min(value, action_points[1])
@@ -38,6 +40,7 @@ func _ready() -> void:
     camera = $CameraRig/Camera
     UI = $UI
     controllers = $Controllers
+    weapon_controller = $CameraRig/WeaponController
 
     emit_signal('ready_to_play')
     init_ui()

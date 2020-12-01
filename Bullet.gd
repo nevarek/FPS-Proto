@@ -19,7 +19,11 @@ func _ready():
 
 func _on_collided(body):
     if hit_something == false and body.has_method('object_hit'):
-        body.object_hit(PROJECTILE_DAMAGE, global_transform)
+        var collision_info = {
+            position = global_transform.origin,
+            normal = global_transform.basis.z.normalized()
+        }
+        body.object_hit(PROJECTILE_DAMAGE, collision_info)
 
     hit_something = true # stop projectile
     emit_signal('projectile_stopped', global_transform, hit_something)
